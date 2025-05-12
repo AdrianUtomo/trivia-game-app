@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/Select";
 import { Label } from "./ui/Label";
-import { Brain, Rocket } from "lucide-react";
+import { Rocket, Gamepad2 } from "lucide-react";
 import { Button } from "./ui/Button";
 import { useGetCategories } from "@/lib/hooks/useGetCategories";
 import { useForm, Controller } from "react-hook-form";
@@ -88,7 +88,7 @@ export default function GameSetup() {
       <Card className="shadow-lg border-purple-200 dark:border-purple-900">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Brain className="text-purple-600 dark:text-purple-400" />
+            <Gamepad2 className="text-purple-600 dark:text-purple-400" />
             Game Setup
           </CardTitle>
           <CardDescription>
@@ -96,36 +96,7 @@ export default function GameSetup() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="difficulty">Difficulty</Label>
-            <Controller
-              name="difficulty"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a difficulty" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem value="easy">Easy</SelectItem>
-                      <SelectItem value="medium">Medium</SelectItem>
-                      <SelectItem value="hard">Hard</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              )}
-            />
-            {errors.difficulty && (
-              <p className="text-sm text-red-500 mt-1">
-                {errors.difficulty.message}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
+        <div className="space-y-2">
             <Label htmlFor="category">Category</Label>
             <Controller
               name="category"
@@ -156,6 +127,35 @@ export default function GameSetup() {
             {errors.category && (
               <p className="text-sm text-red-500 mt-1">
                 {errors.category.message}
+              </p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="difficulty">Difficulty</Label>
+            <Controller
+              name="difficulty"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a difficulty" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="easy">Easy</SelectItem>
+                      <SelectItem value="medium">Medium</SelectItem>
+                      <SelectItem value="hard">Hard</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              )}
+            />
+            {errors.difficulty && (
+              <p className="text-sm text-red-500 mt-1">
+                {errors.difficulty.message}
               </p>
             )}
           </div>
