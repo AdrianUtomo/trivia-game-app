@@ -17,7 +17,8 @@ export function Results({
   onPlayAgain,
   onBackToSetup,
 }: ResultsProps) {
-  const percentage = Math.round((score / totalQuestions) * 100);
+  const percentage =
+    totalQuestions === 0 ? 0 : Math.round((score / totalQuestions) * 100);
 
   let message = "";
   let color = "";
