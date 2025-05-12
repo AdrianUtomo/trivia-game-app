@@ -15,6 +15,7 @@ export const useGetCategories = () => {
     queryFn: async () => {
       const url = new URL("/api/proxy/api_category.php", window.location.origin)
       
+      // Prepare fetch options
       const fetchOptions: RequestInit = {
         method: "GET",
         headers: {
