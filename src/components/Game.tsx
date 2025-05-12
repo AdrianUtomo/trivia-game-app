@@ -48,7 +48,7 @@ export default function Game({ questionParams, onBackToSetup }: GameProps) {
   const prepareAnswers = (question: TriviaQuestion) => {
     if (!question) return;
 
-    // Combine correct and incorrect answers
+    // Combine correct and incorrect answers and shuffle it
     const allAnswers = [question.correct_answer, ...question.incorrect_answers];
     const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5)
 
