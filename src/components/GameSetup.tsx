@@ -165,7 +165,7 @@ export default function GameSetup() {
             onClick={handleSubmit(onSubmit)}
             className="w-full bg-purple-600 hover:bg-purple-700 text-white"
           >
-            <Rocket className="mr-2" />
+            <Rocket />
             Start Game
           </Button>
         </CardFooter>
