@@ -24,6 +24,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import Game from "./Game";
+import { useQueryClient } from "@tanstack/react-query";
 
 // Define the form schema with zod
 const gameSetupSchema = z.object({
@@ -39,6 +40,7 @@ const gameSetupSchema = z.object({
 type GameSetupFormValues = z.infer<typeof gameSetupSchema>;
 
 export default function GameSetup() {
+  const queryClient = useQueryClient();
   const { data: categoryData } = useGetCategories();
   const [formData, setFormData] = useState<GameSetupFormValues | null>(null);
   const [gameStarted, setGameStarted] = useState(false);
@@ -66,7 +68,6 @@ export default function GameSetup() {
   };
 
   if (gameStarted && formData) {
-    // Ensure questionsParams is defined when passing to Game
     const gameParams = {
       amount: 10,
       category: parseInt(formData.category),
@@ -79,6 +80,10 @@ export default function GameSetup() {
         setGameStarted(false);
         setFormData(null);
         reset();
+        // Remove questions query from cache
+        queryClient.removeQueries({
+          queryKey: ["get-questions", gameParams],
+        });
       }}></Game>
     )
   }
