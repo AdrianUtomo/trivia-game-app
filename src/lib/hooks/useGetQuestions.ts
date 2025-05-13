@@ -53,6 +53,7 @@ export const useGetQuestions = (
       // Process questions to decode HTML entities
       return data.results.map((q: Question) => ({
         ...q,
+        category: decodeHtmlEntities(q.category),
         question: decodeHtmlEntities(q.question),
         correct_answer: decodeHtmlEntities(q.correct_answer),
         incorrect_answers: q.incorrect_answers.map(decodeHtmlEntities),
