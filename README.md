@@ -2,6 +2,8 @@
 
 A fun and interactive trivia game built with Next.js where users can test their knowledge across various categories.
 
+Live Demo: [Click Here](https://trivia-game-app-eight.vercel.app/)
+
 ## Features
 
 - Multiple trivia categories
